@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/2nnovate/meal-planner-ssr/issues"
   },
-  "homepage": "https://github.com/2nnovate/meal-planner-ssr#readme"
+  "homepage": "https://github.com/2nnovate/meal-planner-ssr#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "next": "^10.0.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
 }
