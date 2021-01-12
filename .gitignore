@@ -3,3 +3,7 @@ node_modules
 .idea/
 
 .next/
+
+# Serverless directories
+.serverless
+.serverless_nextjs
