@@ -5,3 +5,9 @@
 .description {
     color: #8C8C8C;
 }
+
+.coverImage {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+}
