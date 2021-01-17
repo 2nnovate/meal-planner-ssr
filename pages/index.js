@@ -1,5 +1,5 @@
-import Layout from '../components/Layout';
-import Cover from '../components/steps';
+import Layout from '../src/components/Layout';
+import Cover from '../src/components/steps';
 
 const Index = () => (
   <Layout>
