@@ -1,0 +1,9 @@
+body {
+  max-width: 460px;
+  padding: 80px 10px;
+  margin: auto !important;
+
+  @media only screen and (max-width: 460px) {
+    width: 100%;
+  }
+}

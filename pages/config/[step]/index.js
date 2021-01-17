@@ -1,14 +1,16 @@
 import { useRouter } from 'next/router';
-import { Radio, Input } from 'antd';
+import {
+  Progress,
+  Radio,
+  Input,
+} from 'antd';
 
 import { mealPlanConfigContext } from '../../../src/contexts/mealPlanConfigContext';
 import Layout from '../../../src/components/Layout';
 
-const radioStyle = {
-  display: 'block',
-  height: '30px',
-  lineHeight: '30px',
-};
+import styles from './index.module.scss';
+
+const { Search } = Input;
 
 const STEP_INFO = [{
   key: 'goal',
@@ -18,36 +20,80 @@ const STEP_INFO = [{
   key: 'weight',
   title: '현재 체중을 입력해주세요.',
   description: '',
-  input: '',
 }, {
   key: 'sex',
   title: '성별을 입력해주세요.',
   description: '',
-  input: '',
 }, {
   key: 'tall',
   title: '신장을 입력해주세요.',
   description: '',
-  input: '',
 }, {
   key: 'age',
   title: '만 나이를 입력해주세요.',
   description: '',
-  input: '',
 }, {
   key: 'activity',
   title: '하루에 얼마나 활동하는지 선택해주세요.',
   description: '',
-  input: '',
 }, {
   key: 'mealCounts',
   title: '하루에 몇 끼를 먹을지 설정해주세요.',
   description: '',
-  input: '',
+}];
+
+const GOAL_OPTIONS = [{
+  value: 'loose',
+  label: '체중 감량',
+}, {
+  value: 'maintain',
+  label: '체중 유지',
+}, {
+  value: 'gain',
+  label: '체중 증량',
+}];
+
+const SEX_OPTIONS =[{
+  value: 'male',
+  label: '남성',
+}, {
+  value: 'female',
+  label: '여성',
+}];
+
+const ACTIVITY_OPTIONS =[{
+  value: 'less',
+  label: '거의 앉아서 일함',
+}, {
+  value: 'little',
+  label: '적은 활동',
+}, {
+  value: 'normal',
+  label: '평균적인 활동',
+}, {
+  value: 'more',
+  label: '많은 활동',
+}, {
+  value: 'many',
+  label: '아주 많은 활동량',
+}];
+
+const MEAL_COUNTS_OPTIONS =[{
+  value: 1,
+  label: '한 끼',
+}, {
+  value: 2,
+  label: '두 끼',
+}, {
+  value: 3,
+  label: '세 끼',
+}, {
+  value: 4,
+  label: '네 끼',
 }];
 
 const renderInput = ({ key, config, handleChange }) => {
-  const currnetValue = config[key];
+  const currentValue = config[key];
 
   switch(key) {
     case 'goal': {
@@ -55,30 +101,123 @@ const renderInput = ({ key, config, handleChange }) => {
 
       return (
         <Radio.Group
-          value={currnetValue}
+          size="large"
+          className={styles.radioGroup}
+          value={currentValue}
           onChange={setValue}
         >
-          <Radio.Button style={radioStyle} value="loose">
-            체중 감량
-          </Radio.Button>
-          <Radio.Button style={radioStyle} value="maintain">
-            체중 유지
-          </Radio.Button>
-          <Radio.Button style={radioStyle} value="gain">
-            체중 증량
-          </Radio.Button>
+          {GOAL_OPTIONS.map(({ value, label }) => (
+              <Radio.Button
+                  className={styles.radio}
+                  value={value}
+                  key={value}
+              >
+                {label}
+              </Radio.Button>
+          ))}
         </Radio.Group>
       );
     }
     case 'weight': {
+      const setValue = (value) => handleChange(value);
+
+      return (
+        <Search
+          defaultValue={currentValue}
+          onSearch={setValue}
+          suffix="kg"
+          enterButton="입력 완료"
+        />
+      );
+    }
+    case 'sex': {
       const setValue = ({ target }) => handleChange(target.value);
 
       return (
-        <Input
-          defaultValue={currnetValue}
-          onPressEnter={setValue}
-          suffix="kg"
-        />
+          <Radio.Group
+              size="large"
+              className={styles.radioGroup}
+              value={currentValue}
+              onChange={setValue}
+          >
+            {SEX_OPTIONS.map(({ value, label }) => (
+                <Radio.Button
+                    className={styles.radio}
+                    value={value}
+                    key={value}
+                >
+                  {label}
+                </Radio.Button>
+            ))}
+          </Radio.Group>
+      );
+    }
+    case 'tall': {
+      const setValue = (value) => handleChange(value);
+
+      return (
+          <Search
+              defaultValue={currentValue}
+              onSearch={setValue}
+              suffix="cm"
+              enterButton="입력 완료"
+          />
+      );
+    }
+    case 'age': {
+      const setValue = (value) => handleChange(value);
+
+      return (
+          <Search
+              defaultValue={currentValue}
+              onSearch={setValue}
+              suffix="세"
+              enterButton="입력 완료"
+          />
+      );
+    }
+    case 'activity': {
+      const setValue = ({ target }) => handleChange(target.value);
+
+      return (
+          <Radio.Group
+              size="large"
+              className={styles.radioGroup}
+              value={currentValue}
+              onChange={setValue}
+          >
+            {ACTIVITY_OPTIONS.map(({ value, label }) => (
+                <Radio.Button
+                    className={styles.radio}
+                    value={value}
+                    key={value}
+                >
+                  {label}
+                </Radio.Button>
+            ))}
+          </Radio.Group>
+      );
+    }
+    case 'mealCounts': {
+      const setValue = ({ target }) => handleChange(target.value);
+
+      return (
+          <Radio.Group
+              size="large"
+              className={styles.radioGroup}
+              value={currentValue}
+              onChange={setValue}
+          >
+            {MEAL_COUNTS_OPTIONS.map(({ value, label }) => (
+                <Radio.Button
+                    className={styles.radio}
+                    value={value}
+                    key={value}
+                >
+                  {label}
+                </Radio.Button>
+            ))}
+          </Radio.Group>
       );
     }
     default:
@@ -86,7 +225,7 @@ const renderInput = ({ key, config, handleChange }) => {
   }
 };
 
-const Config = ({ stepKey, nextUrl }) => {
+const Config = ({ stepKey, nextUrl, percent }) => {
   const router = useRouter();
 
   const stepInfo = STEP_INFO.find(({ key }) => key === stepKey) || {};
@@ -106,7 +245,18 @@ const Config = ({ stepKey, nextUrl }) => {
 
         return (
           <Layout>
-            <h1>{title}</h1>
+            <div className={styles.progress}>
+              <Progress
+                  percent={percent}
+                  size="large"
+                  steps={STEP_INFO.length + 1}
+                  showInfo={false}
+                  strokeColor="#FFC53D"
+              />
+            </div>
+            <h1 className={styles.title}>
+              {title}
+            </h1>
             {renderInput({
               key: stepKey,
               config,
@@ -124,22 +274,26 @@ export async function getStaticPaths() {
   const paths = stepKeys.map(key => `/config/${key}`);
 
   return { paths, fallback: false }
-};
+}
 
 export async function getStaticProps({ params }) {
   const { step: currentStep } = params;
 
   const currentIndex = STEP_INFO.findIndex(({ key }) => key === currentStep);
   const stepInfo = STEP_INFO[currentIndex];
+
   const nextStepInfo = STEP_INFO[currentIndex + 1];
   const nextUrl = nextStepInfo ? `/config/${nextStepInfo.key}` : '/result';
+
+  const percent = (currentIndex + 1) / (STEP_INFO.length + 1) * 100;
 
   return {
     props: {
       stepKey: stepInfo.key,
+      percent,
       nextUrl,
     },
   }
-};
+}
 
 export default Config;

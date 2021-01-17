@@ -7,7 +7,7 @@ import {
 import styles from './index.module.css';
 
 
-const Cover = () => (
+const mainPage = () => (
     <div className={styles.cover}>
       <h1>나만의 식단 구성하기</h1>
       <div className={styles.description}>
@@ -24,6 +24,7 @@ const Cover = () => (
       <Link href="/config/goal">
         <Button
             type="primary"
+            size="large"
             block
         >
           나만의 식단 구성하기
@@ -32,4 +33,4 @@ const Cover = () => (
     </div>
 );
 
-export default Cover;
+export default mainPage;

@@ -1,9 +1,9 @@
 import Layout from '../src/components/Layout';
-import Cover from '../src/components/steps';
+import MainPage from '../src/components/mainPage';
 
 const Index = () => (
   <Layout>
-    <Cover />
+    <MainPage />
   </Layout>
 );
 

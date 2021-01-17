@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import "antd/dist/antd.css";
+import 'antd/dist/antd.css';
+
+import '../src/styles/layout.scss';
 
 import { mealPlanConfigContext } from '../src/contexts/mealPlanConfigContext';
 
