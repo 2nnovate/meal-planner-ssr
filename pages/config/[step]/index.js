@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import { Radio, Input } from 'antd';
 
 import { mealPlanConfigContext } from '../../../src/contexts/mealPlanConfigContext';
@@ -8,7 +8,7 @@ const radioStyle = {
   display: 'block',
   height: '30px',
   lineHeight: '30px',
-}
+};
 
 const STEP_INFO = [{
   key: 'goal',
@@ -91,17 +91,16 @@ const Config = ({ stepKey, nextUrl }) => {
 
   const stepInfo = STEP_INFO.find(({ key }) => key === stepKey) || {};
 
-  const {
-    title,
-    description,
-    input,
-  } = stepInfo;
+  const { title } = stepInfo;
 
   return (
     <mealPlanConfigContext.Consumer>
       {({ config, setConfig }) => {
         const handleChange = (value) => {
-          setConfig(stepKey, value);
+          setConfig({
+            ...config,
+            [stepKey]: value,
+          });
           router.push(nextUrl);
         };
 
@@ -125,7 +124,7 @@ export async function getStaticPaths() {
   const paths = stepKeys.map(key => `/config/${key}`);
 
   return { paths, fallback: false }
-}
+};
 
 export async function getStaticProps({ params }) {
   const { step: currentStep } = params;
@@ -141,6 +140,6 @@ export async function getStaticProps({ params }) {
       nextUrl,
     },
   }
-}
+};
 
 export default Config;

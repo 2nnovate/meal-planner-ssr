@@ -1,5 +1,3 @@
-import "antd/dist/antd.css";
-
 import Footer from './footer';
 
 import styles from './Layout.module.css';
