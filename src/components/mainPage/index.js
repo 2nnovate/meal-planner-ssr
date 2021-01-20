@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import {
   Button,
 } from 'antd';
 
+import coverImage from './images/coverMain.png';
 import styles from './index.module.css';
 
 
@@ -14,12 +14,7 @@ const mainPage = () => (
         체중 조절 목표를 설정하고 나에게 맞는 식단을 구성해보세요.
       </div>
       <div className={styles.coverImage}>
-        <Image
-            src="/coverMain.png"
-            layout="responsive"
-            width={280}
-            height={280}
-        />
+        <img src={coverImage} />
       </div>
       <Link href="/config/goal">
         <Button
