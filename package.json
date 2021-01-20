@@ -28,7 +28,9 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.13.3",
+    "file-loader": "^6.2.0",
     "serverless": "^2.18.0",
-    "serverless-nextjs-plugin": "^2.5.2-alpha.0"
+    "serverless-nextjs-plugin": "^2.5.2-alpha.0",
+    "url-loader": "^4.1.1"
   }
 }
