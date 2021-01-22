@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router';
 import {
-  Progress,
   Radio,
   Input,
 } from 'antd';
 
 import { mealPlanConfigContext } from '../../../src/contexts/mealPlanConfigContext';
+
 import Layout from '../../../src/components/Layout';
+import ProgressBar from '../../../src/components/progressBar';
 
 import styles from './index.module.scss';
 
@@ -225,7 +226,7 @@ const renderInput = ({ key, config, handleChange }) => {
   }
 };
 
-const Config = ({ stepKey, nextUrl, percent }) => {
+const Config = ({ currentIndex, stepKey, nextUrl }) => {
   const router = useRouter();
 
   const stepInfo = STEP_INFO.find(({ key }) => key === stepKey) || {};
@@ -246,12 +247,9 @@ const Config = ({ stepKey, nextUrl, percent }) => {
         return (
           <Layout>
             <div className={styles.progress}>
-              <Progress
-                  percent={percent}
-                  size="large"
-                  steps={STEP_INFO.length + 1}
-                  showInfo={false}
-                  strokeColor="#FFC53D"
+              <ProgressBar
+                step={currentIndex + 1}
+                total={STEP_INFO.length}
               />
             </div>
             <h1 className={styles.title}>
@@ -285,12 +283,10 @@ export async function getStaticProps({ params }) {
   const nextStepInfo = STEP_INFO[currentIndex + 1];
   const nextUrl = nextStepInfo ? `/config/${nextStepInfo.key}` : '/result';
 
-  const percent = (currentIndex + 1) / (STEP_INFO.length + 1) * 100;
-
   return {
     props: {
+      currentIndex,
       stepKey: stepInfo.key,
-      percent,
       nextUrl,
     },
   }
