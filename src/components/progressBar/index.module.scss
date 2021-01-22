@@ -1,0 +1,30 @@
+$primary: #FFC53D;
+
+.progress-info {
+  color: $primary;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.progress-bar {
+  width: 100%;
+  margin-bottom: 42px;
+  display: flex;
+}
+
+.progress-item {
+  height: 4px;
+  margin-right: 4px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.fill {
+  background-color: $primary;
+}
+
+.empty {
+  background-color: #F0F0F0;
+}
