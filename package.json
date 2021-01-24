@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/2nnovate/meal-planner-ssr#readme",
   "dependencies": {
+    "@ant-design/icons": "^4.4.0",
     "antd": "^4.10.2",
     "axios": "^0.21.1",
     "less": "^4.1.0",
