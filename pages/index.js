@@ -1,10 +1,7 @@
-import Layout from '../src/components/Layout';
-import MainPage from '../src/components/mainPage';
+import MainPage from '../src/pages/main';
 
 const Index = () => (
-  <Layout>
-    <MainPage />
-  </Layout>
+  <MainPage />
 );
 
 export default Index;

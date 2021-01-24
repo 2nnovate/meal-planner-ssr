@@ -1,8 +1,9 @@
 .footer {
     position: fixed;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 
-    max-width: 460px;
     margin: auto;
     padding: 10px 0 25px;
     text-align: center;
