@@ -6,7 +6,7 @@ import {
 
 import { mealPlanConfigContext } from '../../../src/contexts/mealPlanConfigContext';
 
-import Layout from '../../../src/pages/Layout';
+import Layout from '../../../src/pages/layout';
 import ProgressBar from '../../../src/components/progressBar';
 
 import styles from './index.module.scss';

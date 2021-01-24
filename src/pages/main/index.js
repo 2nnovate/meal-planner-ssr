@@ -3,7 +3,7 @@ import {
   Button,
 } from 'antd';
 
-import Layout from '../Layout';
+import Layout from '../layout';
 import coverImage from './images/coverMain.png';
 import styles from './index.module.css';
 
