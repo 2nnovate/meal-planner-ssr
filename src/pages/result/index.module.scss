@@ -1,0 +1,61 @@
+$primary: #FFC53D;
+
+.result-page-header {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.result-page-header-sub-title {
+  color: rgba(0, 0, 0, .5);
+}
+
+.result-page-header-total-calorie {
+  color: $primary;
+}
+
+.result-page-content {
+   margin-bottom: 42px;
+ }
+
+.result-page-content-item {
+  margin-bottom: 46px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.result-page-content-item-title {
+  margin-bottom: 16px;
+}
+
+.result-page-content-item-detail {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+
+  div:first-child {
+    color: rgba(0, 0, 0, .5);
+    flex-grow: 1;
+    flex-basis: 50px;
+  }
+
+  div:last-child {
+    flex-grow: 2;
+    flex-basis: 50px;
+  }
+}
+
+.result-page-share-section {
+  text-align: center;
+
+  h4 {
+    color: rgba(0, 0, 0, .5);
+  }
+}
+
+.result-page-share-section-list {
+  display: flex;
+  justify-content: center;
+}
